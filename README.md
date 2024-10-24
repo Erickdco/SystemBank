@@ -1,5 +1,6 @@
-Sistema Bancário em Java - Meebank
-Este é um projeto em construção de um sistema bancário completo, desenvolvido em Java, com o objetivo de simular operações bancárias comuns. O sistema é parte do meu portfólio e está sendo desenvolvido com foco em aplicar conceitos de orientação a objetos, boas práticas de programação, e integração futura com banco de dados MySQL.
+# Sistema Bancário em Java - Meebank
+
+### Este é um projeto em construção de um sistema bancário completo, desenvolvido em Java, com o objetivo de simular operações bancárias comuns. O sistema é parte do meu portfólio e está sendo desenvolvido com foco em aplicar conceitos de orientação a objetos, boas práticas de programação, e integração futura com banco de dados MySQL.
 
 Funcionalidades Implementadas
 Criação de contas:
