@@ -7,33 +7,49 @@ public class Pix {
     private ValidaTelefone validaTelefone; // Instância da classe de validação de telefone
     private ValidaEmail emailValidator; // Instância da classe de validação de e-mail
     private ValidaCpf validaroCpf;
+    private ChaveAlatoria validaAlea;
 
     // Construtor para inicializar as classes de validação
     public Pix() {
         this.validaTelefone = new ValidaTelefone();
         this.emailValidator = new ValidaEmail();
         this.validaroCpf = new ValidaCpf();
+        this.validaAlea = new ChaveAlatoria();
     }
 
     // Método para realizar validação de telefone, e-mail e CPF
     public void realizarPix() {
         Scanner scanner = new Scanner(System.in);
+               
+        System.out.println("Digite a chave aleatória:");
+        String chaveAleatoriaDig = scanner.nextLine();
         
-        // Validação de CPF
-        System.out.println("Digite o CPF para a realização do PIX: ");
-        String cpfPix = scanner.nextLine();
-        
-        try {
-            boolean cpfValidado = validaroCpf.validaCPF(cpfPix); 
-            if (!cpfValidado) {
-                System.out.println("CPF inválido. O processo de PIX foi interrompido.");
-                return; // Interrompe o processo se o CPF for inválido
-            }
-        } catch (Exception e) {
-            System.out.println("Ocorreu um erro ao validar o CPF: " + e.getMessage());
-            return; // Interrompe o processo se ocorrer um erro durante a validação do CPF
+        boolean chaveASerValidada = validaAlea.validarChaveAleatoria(chaveAleatoriaDig);
+        if(chaveASerValidada == true) {
+        	
+       System.out.println("Chave aleeatória válida!");        	
+        	
+        	
+        } else {
+        	
+        System.out.println("Chave invalida!");	
+        	return;
         }
-
+        
+        
+        System.out.println("Digite o cpf");
+        String cpfDigitado = scanner.nextLine();
+       
+        boolean cpfASerValidado = validaroCpf.validar(cpfDigitado);
+        if (cpfASerValidado) {
+        	System.out.println("Cpf valido!");
+        	
+        } else {
+        	
+        	System.out.println("Cpf invalido!");
+        	return;
+        }
+        
         // Validação de Telefone
         System.out.println("Digite o número do telefone no formato DDD+NUMERO:");
         String numeroTelefone = scanner.nextLine();

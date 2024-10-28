@@ -11,6 +11,7 @@ public class Teste {
 		Cliente pessoaFisica = new Cliente();
 		RecargaCelular recarga = new RecargaCelular(contaCorrente);
 		 Pix chavePix = new Pix();
+		 
 
 		Extrato transacao = new Extrato();
 
