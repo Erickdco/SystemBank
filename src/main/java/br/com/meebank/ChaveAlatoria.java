@@ -7,11 +7,19 @@ public class ChaveAlatoria {
 	
 String padronizacao = "^[a-zA-z0-9-]+$";	
 		
-	if (aleatoria.matches(padronizacao)) {
+if(aleatoria.length() <=36 & aleatoria.length() >= 32) {	
+	
+	System.out.println("foi" + aleatoria);
+	
+
+	if (aleatoria.matches(padronizacao) ) {
 		
+
+	}
+	System.out.println(aleatoria.length());
 		return true;
-				
-	} else {
+			
+	}  else{
 		
 		System.out.println("Chave aleatoria invalida!");
 		return false;
