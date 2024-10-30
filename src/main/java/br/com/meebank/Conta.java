@@ -6,7 +6,7 @@ public class Conta {
 
 	private String nome;
 	private int numeroConta;
-	private double saldoConta;
+	private double saldoConta = 1000;
 	private double taxa = 0;
 	private double dolar = 5.61;
 	private double saldoDolar;

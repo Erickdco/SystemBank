@@ -49,7 +49,7 @@ public class Teste {
 		// System.out.println( transacao.getHora());
 
 	//	recarga.selecionarOperadora();
-//	System.out.println(CambioFisico.comprarDolar());
+		//System.out.println(CambioFisico.comprarDolar());
 
 		chavePix.realizarPix();
 		
