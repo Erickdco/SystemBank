@@ -23,8 +23,8 @@ public class Pix {
     public void realizarPix() {
        double saldoAtual = conta.getSaldo();
        Scanner escrito = new Scanner(System.in);
-       System.out.println("Selcione a chave pix:");
-       System.out.println("Cpf, email, telefone, aleatoria");
+       System.out.println("Selcione o tipo de chave pix:");
+       System.out.println("Cpf, email, numero, aleatoria");
        
        
        
@@ -62,77 +62,108 @@ public class Pix {
              }
         	break;
       case "numero":
+    	  System.out.println("Digite o número de telefone:");
+    	  String numeroAserDigitado = escrito.nextLine();
+    	  
+    	// Chama o método para validar o telefone
+    	  boolean telefoneValido = validaTelefone.validaTelefone(numeroAserDigitado);
+    	  if (telefoneValido) {
+    	      System.out.println("Telefone valido");
+    	      
+    	      System.out.println("Seu saldo atual é de:" + saldoAtual);
+           	
+           	System.out.println("Digite o valor da transferencia:");
+           	double transfer = escrito.nextDouble();
+           	 
+           	if(conta.getSaldo()>= transfer ) {
+           	double novoSaldo = saldoAtual - transfer; 
+           		System.out.println("transferência concluída com sucesso!");
+           		System.out.println("O seu saldo atual é de:" + novoSaldo);
+           		break;
+           	} else {
+           		System.out.println("Saldo insuficiente para realizar essa transferência!");
+           		System.out.println("O seu saldo é de:" + saldoAtual);
+           		break;
+           	}
+    	     
+    	  } else {
+    		  
+    		  System.out.println("chave telefonica invalida!");
+    		  break;
+    	  }
+    	  
       case "email":
+    	  
+    	  System.out.println("Digite o e-mail:");
+    	  String email = escrito.nextLine();
+
+    	  // Chama o método para validar o e-mail
+    	  boolean emailValido = emailValidator.validarEmail(email);
+    	  if (emailValido) {
+    	      System.out.println("E-mail valido.");
+    	      
+    	      System.out.println("Seu saldo atual é de:" + saldoAtual);
+             	
+             	System.out.println("Digite o valor da transferencia:");
+             	double transfer = escrito.nextDouble();
+             	 
+             	if(conta.getSaldo()>= transfer ) {
+             	double novoSaldo = saldoAtual - transfer; 
+             		System.out.println("transferência concluída com sucesso!");
+             		System.out.println("O seu saldo atual é de:" + novoSaldo);
+             		break;
+             	} else {
+             		System.out.println("Saldo insuficiente para realizar essa transferência!");
+             		System.out.println("O seu saldo é de:" + saldoAtual);
+             		break;
+             	}
+    	  }  else {
+    		  
+    		  System.out.println("chave email invalida!");
+    		  break;	  
+    	  }
+    	  
+    	  
       case "aleatoria":	
      
-            
+    	  System.out.println("Digite a chave aleatória:");
+    	  String chaveAleatoriaDig = escrito.nextLine();
+
+    	  boolean chaveASerValidada = validaAlea.validarChaveAleatoria(chaveAleatoriaDig);
+    	  if(chaveASerValidada == true) {
+    	  	
+    	  System.out.println("Chave aleatória válida!");        	
+    	  	
+    	  System.out.println("Seu saldo atual é de:" + saldoAtual);
+       	
+       	System.out.println("Digite o valor da transferencia:");
+       	double transfer = escrito.nextDouble();
+       	 
+       	if(conta.getSaldo()>= transfer ) {
+       	double novoSaldo = saldoAtual - transfer; 
+       		System.out.println("transferência concluída com sucesso!");
+       		System.out.println("O seu saldo atual é de:" + novoSaldo);
+       		break;
+       	} else {
+       		System.out.println("Saldo insuficiente para realizar essa transferência!");
+       		System.out.println("O seu saldo é de:" + saldoAtual);
+       		break;
+       	}
+    	  	
+    	  } else {
+    	  	
+    	  System.out.println("Chave invalida!");	
+    	  	return;
+    	  } 
              		
         	
        default:
-        	System.out.println("padrao");
+        	System.out.println("Opcão inválida!");
         	
-        	System.out.println("Digite o valor da transferencia:");
+        	System.out.println("Selecione uma opção valida!");
         	
-          // if(conta.getSaldo() >= transferencia )	 	
         }
     }
 }
- 
-/*     System.out.println("Digite a chave aleatória:");
-String chaveAleatoriaDig = scanner.nextLine();
-
-boolean chaveASerValidada = validaAlea.validarChaveAleatoria(chaveAleatoriaDig);
-if(chaveASerValidada == true) {
-	
-System.out.println("Chave aleeatória válida!");        	
-	
-	
-} else {
-	
-System.out.println("Chave invalida!");	
-	return;
-}
-
-
-System.out.println("Digite o cpf");
-String cpfDigitado = scanner.nextLine();
-
-boolean cpfASerValidado = validaroCpf.validar(cpfDigitado);
-if (cpfASerValidado) {
-	System.out.println("Cpf valido!");
-	
-} else {
-	
-	System.out.println("Cpf invalido!");
-	return;
-}
-
-// Validação de Telefone
-System.out.println("Digite o número do telefone no formato DDD+NUMERO:");
-String numeroTelefone = scanner.nextLine();
-
-// Chama o método para validar o telefone
-boolean telefoneValido = validaTelefone.validaTelefone(numeroTelefone);
-if (!telefoneValido) {
-    System.out.println("Telefone inválido. O processo de PIX foi interrompido.");
-    return; // Interrompe o processo se o telefone for inválido
-}
-
-// Validação de E-mail
-System.out.println("Digite o e-mail:");
-String email = scanner.nextLine();
-
-// Chama o método para validar o e-mail
-boolean emailValido = emailValidator.validarEmail(email);
-if (!emailValido) {
-    System.out.println("E-mail inválido. O processo de PIX foi interrompido.");
-    return; // Interrompe o processo se o e-mail for inválido
-}
-
-// Se todas as validações forem bem-sucedidas, continua com o processo de PIX
-System.out.println("Processo de PIX realizado com sucesso!");
-*/       
-
-
 
 
